@@ -1,0 +1,18 @@
+.example-form {
+    max-width: 400px;
+    border-radius: 20px;
+
+  }
+  
+  .example-full-width {
+    width: 100%;
+
+  }
+
+  html{
+    background-position: center;
+    background-repeat: no-repeat; 
+  }
+  #container{
+    background-color: #5c3c92;
+  }

@@ -1,0 +1,58 @@
+<div style="margin-top: 70px;" class="container">
+  <form [formGroup]="productAddForm" class="example-form">
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Product Name</mat-label>
+      <input name="productName" formControlName="productName" matInput placeholder="Product Name" />
+    </mat-form-field>
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Description</mat-label>
+      <textarea name="productDescription" formControlName="productDescription" style="height: 200px;" matInput placeholder="Description"></textarea>
+    </mat-form-field>
+    <div class="row">
+      <div class="col-md-3">
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Product Quantity</mat-label>
+          <input type="number" formControlName="productQuantity" name="productQuantity" matInput placeholder="Product Quantity"/>
+        </mat-form-field>
+      </div>
+      <div class="col-md-3">
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Product Price</mat-label>
+          <input type="number" formControlName="productPrice" name="productPrice" matInput placeholder="Product Price"/>
+        </mat-form-field>
+      </div>
+      <div class="col-md-3">
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Brand Id</mat-label>
+          <input type="number" formControlName="brandId" name="brandId" matInput placeholder="brand Id"/>
+        </mat-form-field>
+      </div>
+      <div class="col-md-3">
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Color Id</mat-label>
+          <input type="number" formControlName="colorId" name="colorId" matInput placeholder="color Id"/>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <mat-form-field   appearance="fill">
+      <mat-label>Select</mat-label>
+      <mat-select formControlName="categoryId"  (selectionChange)="onSelectCategory($event)">
+        <mat-option value=1>Clothes</mat-option>
+        <mat-option value=2>Second option</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text">Upload</span>
+      </div>
+      <div class="custom-file">
+        <input (change)="selectFiles($event)" multiple type="file" class="custom-file-input" id="inputGroupFile01">
+        <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+      </div>
+    </div>
+    <button (click)="addProduct()" type="submit" mat-raised-button color="primary">Primary</button>
+
+  </form>
+</div>

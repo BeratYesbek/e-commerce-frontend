@@ -1,0 +1,189 @@
+<header class="border-bottom mb-4 pb-3">
+  <div class="form-inline">
+    <span class="mr-md-auto">{{productsDto.length}} Item Found <i class="fa fa-soundcloud" aria-hidden="true"></i></span>
+    <select class="mr-2 form-control">
+      <option>Latest items</option>
+      <option>Trending</option>
+      <option>Most Popular</option>
+      <option>Cheapest</option>
+    </select>
+    <div class="btn-group">
+      <a href="#" class="btn btn-outline-secondary active" data-toggle="tooltip" title="List view">
+        <i class="fa fa-bars"></i></a>
+      <a href="#" class="btn  btn-outline-secondary" data-toggle="tooltip" title="Grid view">
+        <i class="fa fa-th"></i></a>
+    </div>
+  </div>
+</header><!-- sect-heading -->
+<div>
+  <ul>
+    <li *ngFor="let product of productsDto |slice: (page-1)*pageSize:(page-1)*pageSize+pageSize; let i = index;"
+      style="margin-top: 15px;">
+      <article class="card card-product-list">
+        <div class="row no-gutters">
+          <aside class="col-md-3">
+            <a href="#" class="img-wrap">
+              <ngb-carousel style="margin-bottom: 5px;" *ngIf="product.images">
+
+                <ng-template *ngFor="let image of product.images" ngbSlide>
+                  <div class="picsum-img-wrapper">
+                    <img style="height: 300px; width: 300px;" src="https://localhost:44303{{image}}"
+                      alt="Random first slide">
+                  </div>
+                  <div class="carousel-caption">
+                  </div>
+                </ng-template>
+              </ngb-carousel>
+            </a>
+          </aside> <!-- col.// -->
+          <div class="col-md-6">
+            <div class="info-main">
+              <a href="#" class="h5 title">{{product.productName}} </a>
+              <span style=" opacity: 0.4; margin-top: -10px;">{{product.brandName}}</span>
+              <div class="rating-wrap mb-3">
+                <ul class="rating-stars">
+                  <div style="margin-top: 3px;" class="row">
+                    <div class="col-md-9">
+                      <ngb-rating   style="color: #FF9529; width: 70px; font-size: 30px;" [rate]="rating[i]"></ngb-rating>
+
+                    </div>
+                    <div class="col-md-3">
+                      <div style="padding-left: 3px; padding-bottom: 2px;" class="label-rating">{{rating[i].toFixed(1)}}</div>
+
+                    </div>
+
+                  </div>
+
+                </ul>
+              </div> <!-- rating-wrap.// -->
+
+              <p> {{product.productDescription.substring(0,170)}}......
+              </p>
+              <div style.background-color="#{{product.colorCode}}"
+                style="width: 30px; height: 30px; border: 1px solid #000; border-radius: 50%; margin-left: 3px;">
+              </div>
+              {{product.colorName}}
+            </div> <!-- info-main.// -->
+          </div> <!-- col.// -->
+          <aside class="col-sm-3">
+            <div class="info-aside">
+              <div class="price-wrap">
+                <span class="price h5"> {{product.productPrice}} </span>
+                <del class="price-old"> {{product.productPrice + 150}}</del>
+              </div> <!-- info-price-detail // -->
+              <p class="text-success">Free shipping</p>
+              <br>
+              <p>
+                <a routerLink="/products/{{product.productId}}" class="btn btn-primary btn-block"> Details </a>
+                <a href="#" class="btn btn-light btn-block"><i class="fa fa-heart"></i>
+                  <span class="text">Add to wishlist</span>
+                </a>
+              </p>
+            </div> <!-- info-aside.// -->
+          </aside> <!-- col.// -->
+        </div> <!-- row.// -->
+      </article> <!-- card-product .// -->
+
+    </li>
+    <li>
+      <ngb-pagination [collectionSize]="productsDto.length" [(page)]="page" [pageSize]="pageSize"
+        aria-label="Default pagination"></ngb-pagination>
+    </li>
+
+
+
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+
+  
+  -->
+
+<!--
+
+  
+<div style="margin-top: 25px; margin-bottom: 50px;" class="container">
+  <div id="suggestion-title" class="w3-container w3-center w3-animate-bottom">
+    <h1>All Products</h1>
+
+  </div>
+
+
+  <div class="row">
+    <ul>
+      <li *ngFor="let product of productsDto |slice: (page-1)*pageSize:(page-1)*pageSize+pageSize" style="margin-top: 15px;"
+        class="w3-container w3-center w3-animate-bottom">
+
+        <mat-card class="example-card">
+          <mat-card-header>
+            <div mat-card-avatar class="example-header-image">
+
+            </div>
+            <mat-card-title>{{product.productName}}</mat-card-title>
+            <mat-card-subtitle>{{product.brandName}}</mat-card-subtitle>
+
+          </mat-card-header>
+          <ngb-carousel style="margin-bottom: 5px;" *ngIf="product.images">
+
+            <ng-template *ngFor="let image of product.images" ngbSlide>
+              <div class="picsum-img-wrapper">
+                <img style="height: 300px; width: 300px;" src="https://localhost:44303{{image}}" alt="Random first slide">
+              </div>
+              <div class="carousel-caption">
+              </div>
+            </ng-template>
+          </ngb-carousel>
+
+          <mat-card-content>
+
+            <div style.background-color="#{{product.colorCode}}" style="width: 35px; height: 35px; margin: auto;  border: 1px solid #000; border-radius: 50%;">
+              
+            </div>
+            <h6>Black</h6>
+            <p style="padding: 5px;">
+              {{product.productDescription.toString().substring(0,150)}}
+            </p>
+            <div class="row">
+              <div class="col-md-10">
+                <div class="input-group mb-3">
+                  <input type="number" class="form-control" max="10" min="1" value="1" aria-describedby="basic-addon2">
+                  <div class="input-group-append">
+                    <span class="input-group-text" id="basic-addon2">Quantity</span>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-2">
+                <h2 style=" padding-right: 20px; padding-top: 20px;" style="text-align: center;">
+                  {{product.productPrice}}$</h2>
+
+              </div>
+
+
+            </div>
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-stroked-button color="accent">See Detail</button>
+            <button mat-raised-button color="primary">Add To Cart</button>
+
+          </mat-card-actions>
+        </mat-card>
+
+      </li>
+
+
+    </ul>
+
+  </div>
+</div>
+-->

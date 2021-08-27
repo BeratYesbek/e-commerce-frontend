@@ -1,0 +1,123 @@
+<section class="section-content padding-y bg">
+  <div class="container">
+
+    <article class="card">
+      <div class="card-body">
+        <div class="row">
+          <aside class="col-md-6">
+            <article class="gallery-wrap">
+              <div class="card img-big-wrap">
+                <a href="#"> <img src="https://localhost:44303{{productDto.images[0]}}"></a>
+              </div>
+              <div class="thumbs-wrap ">
+                <a *ngFor="let image of productDto.images" class="item-thumb"> <img
+                    src="https://localhost:44303{{image}}"></a>
+              </div>
+            </article>
+          </aside>
+          <main class="col-md-6">
+            <article>
+              <a href="#" class="text-primary btn-link">{{productDto.categoryName}}</a>
+              <h3 class="title">{{productDto.productName}}</h3>
+              <div>
+                <div style="margin-top: 3px;" class="row">
+                  <div class="col-md-9">
+                    <ngb-rating style="color: #FF9529; width: 70px; font-size: 30px; " [rate]="rating"></ngb-rating>
+
+                  </div>
+              
+                </div>
+                <span class="label-rating mr-3 text-muted">{{rating.toFixed(1)}}/5</span>
+                <a href="#" class="btn-link  mr-3 text-muted"> <i class="fa fa-heart"></i> Save for later </a>
+                <a href="#" class="btn-link text-muted"> <i class="fa fa-book-open"></i> Compare </a>
+              </div>
+
+              <hr>
+
+              <div class="mb-3">
+                <h6>Short description</h6>
+                <ul class="list-dots mb-0">
+                  <li>Made in Russia</li>
+                  <li>Wolf leather </li>
+                  <li>Rubber material bottom</li>
+                  <li>Dark blue color</li>
+                </ul>
+              </div>
+
+              <div class="form-group">
+                <label class="text-muted">Available sizes</label>
+                <div>
+                  <label class="js-check btn btn-check active mr-1">
+                    <input type="radio" name="option_size" value="option1" checked="">
+                    <span>Small</span>
+                  </label>
+                  <label class="js-check btn btn-check mr-1">
+                    <input type="radio" name="option_size" value="option1">
+                    <span>Medium</span>
+                  </label>
+                  <label class="js-check btn btn-check mr-1">
+                    <input type="radio" name="option_size" value="option1">
+                    <span>Large</span>
+                  </label>
+                  <label class="js-check btn btn-check disabled">
+                    <input type="radio" name="option_size" disabled="" value="option1">
+                    <span>Babies</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <var class="price h4">${{productDto.productPrice}}</var> <br>
+                <span class="monthly">${{(productDto.productPrice/9).toFixed(2)}} / monthly <a href="#" class="btn-link">installment </a></span>
+              </div> 
+
+              <div class="mb-4">
+                <a href="#" class="btn btn-primary mr-1">Buy now</a>
+                <a  (click)="addToCart()" class="btn btn-light">Add to card</a>
+              </div>
+
+            </article> 
+          </main>
+        </div>
+      </div> 
+    </article>
+
+    <article class="card mt-5">
+      <div class="card-body">
+
+        <hr>
+        <p>
+          {{productDto.productDescription}}
+        </p>
+
+            <h2 style="color: teal;">reviews and ratings</h2>
+          
+            <ngb-rating style="color: #FF9529; width: 70px; font-size: 30px;" [rate]="rating"></ngb-rating>
+            <span style="margin-left: 60px; padding-bottom: 5px; font-size: 20px">{{rating.toFixed(1)}}</span>
+  
+        
+        <hr>
+        <ul>
+          <li *ngFor="let comment of productDto.comments" style="list-style: none; margin: 10px;">
+
+            <div class="incoming_msg">
+              <div class="incoming_msg_img"> <img id="userImage" src="https://ptetutorials.com/images/user-profile.png"
+                  alt="sunil">
+              </div>
+              <div style="margin-left:5px ;" class="received_msg">
+                <div class="received_withd_msg">
+                  <p style="padding: 5px;">{{comment.productComment}}</p>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+
+    </article>
+  </div>
+
+
+
+</section>

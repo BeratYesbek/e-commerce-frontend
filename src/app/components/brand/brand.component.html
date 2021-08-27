@@ -1,0 +1,19 @@
+<article class="filter-group">
+    <header class="card-header">
+        <a href="#" data-toggle="collapse" data-target="#collapse_2" aria-expanded="true" class="">
+            <i class="icon-control fa fa-chevron-down"></i>
+            <h6 class="title">Brands </h6>
+        </a>
+    </header>
+    <div class="filter-content collapse show" id="collapse_2" >
+        <div class="card-body">
+            <label *ngFor="let brand of brands" class="custom-control custom-checkbox">
+                <input type="checkbox" checked="" class="custom-control-input">
+                <div class="custom-control-label">{{brand.brandName}}
+                    <b class="badge badge-pill badge-light float-right"></b>
+                </div>
+            </label>
+            
+        </div> 
+    </div>
+</article>
