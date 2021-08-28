@@ -1,5 +1,5 @@
 import { SingleResponseModel } from './../../utilities/responeModel/singleResponseModel';
-import { ProductDto } from './../../models/Dtos/ProductDto';
+import { ProductDto } from '../../models/Dtos/productDto';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';

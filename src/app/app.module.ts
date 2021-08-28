@@ -32,6 +32,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { BrandComponent } from './components/brand/brand.component';
 import { HomeComponent } from './components/home/home.component';
 import { CartSummaryComponent } from './components/cart-summary/cart-summary.component';
+import { EventEmitterService } from './services/event-emitter.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -74,7 +75,9 @@ import { CartSummaryComponent } from './components/cart-summary/cart-summary.com
   
     
   ],
-  providers: [],
+  providers: [
+    EventEmitterService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

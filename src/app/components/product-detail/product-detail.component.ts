@@ -1,11 +1,14 @@
+import { EventEmitterService } from './../../services/event-emitter.service';
+import { CategoryAddComponent } from './../category-add/category-add.component';
 import { CartSummaryService } from './../../services/cartSummaryService/cart-summary.service';
-import { ProductDto } from './../../models/Dtos/ProductDto';
+import { ProductDto } from '../../models/Dtos/productDto';
 import { ProductService } from './../../services/productService/product.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NgxImgZoomService } from "ngx-img-zoom";
 import { NgbRatingConfig } from '@ng-bootstrap/ng-bootstrap';
 import { CartSummary } from 'src/app/models/cartSummary';
+import { CartSummaryComponent } from '../cart-summary/cart-summary.component';
 
 declare function imageZoom(x: any, y: any): void
 
@@ -22,6 +25,7 @@ export class ProductDetailComponent implements OnInit {
     private activatedRoute : ActivatedRoute,
     private productService: ProductService,
     private cartSummaryService : CartSummaryService,
+    private eventEmitterService: EventEmitterService,
     private config: NgbRatingConfig 
     ) {
       config.max = 5;
@@ -61,9 +65,13 @@ export class ProductDetailComponent implements OnInit {
 
     this.cartSummaryService.add(cartSummary).subscribe(response => {
       if(response.success){
-        console.log(response.success)
+        this.componentFunction()
       }
     });
+  }
+
+  componentFunction() {
+    this.eventEmitterService.oninvokeProductDetailComponentAddToCartButtonClick()
   }
 
 }

@@ -1,5 +1,5 @@
 import { ProductService } from './../../services/productService/product.service';
-import { ProductDto } from './../../models/Dtos/ProductDto';
+import { ProductDto } from '../../models/Dtos/productDto';
 import { Component, OnInit } from '@angular/core';
 import { NgbRatingConfig } from '@ng-bootstrap/ng-bootstrap';
 

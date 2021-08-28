@@ -17,7 +17,8 @@
 </header><!-- sect-heading -->
 <div>
   <ul>
-    <li *ngFor="let product of productsDto |slice: (page-1)*pageSize:(page-1)*pageSize+pageSize; let i = index;"
+    <ng-container *ngIf="productsDto.length >0; else elseTemplate">
+      <li *ngFor="let product of productsDto |slice: (page-1)*pageSize:(page-1)*pageSize+pageSize; let i = index;"
       style="margin-top: 15px;">
       <article class="card card-product-list">
         <div class="row no-gutters">
@@ -27,7 +28,7 @@
 
                 <ng-template *ngFor="let image of product.images" ngbSlide>
                   <div class="picsum-img-wrapper">
-                    <img style="height: 300px; width: 300px;" src="https://localhost:44303{{image}}"
+                    <img  style="height: 300px; width: 300px;" src="https://localhost:44303{{image}}"
                       alt="Random first slide">
                   </div>
                   <div class="carousel-caption">
@@ -85,6 +86,14 @@
       </article> <!-- card-product .// -->
 
     </li>
+    </ng-container>
+    <ng-template #elseTemplate>
+      <div style="margin:auto" class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </ng-template>
+    
+   
     <li>
       <ngb-pagination [collectionSize]="productsDto.length" [(page)]="page" [pageSize]="pageSize"
         aria-label="Default pagination"></ngb-pagination>

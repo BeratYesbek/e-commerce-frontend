@@ -1,11 +1,11 @@
 export interface Product{
-    productId : Number
+    productId : number
     productName : string
     productDescription : string
-    productQuantity : Number
-    productPrice : Number
-    categoryId : Number
-    brandId : Number
-    colorId : Number
+    productQuantity : number
+    productPrice : number
+    categoryId : number
+    brandId : number
+    colorId : number
 
 } 

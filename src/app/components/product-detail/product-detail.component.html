@@ -7,11 +7,24 @@
           <aside class="col-md-6">
             <article class="gallery-wrap">
               <div class="card img-big-wrap">
-                <a href="#"> <img src="https://localhost:44303{{productDto.images[0]}}"></a>
+                <ng-container *ngIf="productDto != null; else elseTemplate">
+                  <a href="#"> <img src="https://localhost:44303{{productDto.images[0]}}"></a>
+
+                </ng-container>
+                <ng-template #elseTemplate>
+                  
+                </ng-template>
+                
               </div>
               <div class="thumbs-wrap ">
-                <a *ngFor="let image of productDto.images" class="item-thumb"> <img
+                <ng-container *ngIf="productDto != null; else elseTemplate2">
+                  <a  *ngFor="let image of productDto.images" class="item-thumb"> <img
                     src="https://localhost:44303{{image}}"></a>
+                </ng-container>
+                <ng-template #elseTemplate2>
+                  
+                </ng-template>
+            
               </div>
             </article>
           </aside>
