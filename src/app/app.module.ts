@@ -33,6 +33,8 @@ import { BrandComponent } from './components/brand/brand.component';
 import { HomeComponent } from './components/home/home.component';
 import { CartSummaryComponent } from './components/cart-summary/cart-summary.component';
 import { EventEmitterService } from './services/event-emitter.service';
+import { PaymentComponent } from './components/payment/payment.component';
+import { OrderDetailComponent } from './components/order-detail/order-detail.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -51,7 +53,9 @@ import { EventEmitterService } from './services/event-emitter.service';
     FooterComponent,
     BrandComponent,
     HomeComponent,
-    CartSummaryComponent
+    CartSummaryComponent,
+    PaymentComponent,
+    OrderDetailComponent
   ],
   imports: [
     BrowserModule,

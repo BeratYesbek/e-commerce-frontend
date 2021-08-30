@@ -1,7 +1,9 @@
 import { EventEmitterService } from './../../services/event-emitter.service';
 import { CartSummaryService } from './../../services/cartSummaryService/cart-summary.service';
 import { Component, OnInit } from '@angular/core';
-import { CartSummaryDto } from 'src/app/models/Dtos/CartSummaryDto';
+import { CartSummaryDto } from 'src/app/models/Dtos/cartSummaryDto';
+import { Router } from '@angular/router';
+import { CalculateProductCount } from 'src/app/utilities/setCartSummary/calculateProductCount';
 
 @Component({
   selector: 'app-cart-summary',
@@ -14,7 +16,8 @@ export class CartSummaryComponent implements OnInit {
 
   constructor(
     private cartSummaryService: CartSummaryService,
-    private eventEmitterService: EventEmitterService
+    private eventEmitterService: EventEmitterService,
+    private calculateProductCount : CalculateProductCount,
   ) { }
 
   ngOnInit(): void {
@@ -31,7 +34,8 @@ export class CartSummaryComponent implements OnInit {
   getAllCartSummaryByUserId() {
     this.cartSummaryService.getAllCartSummaryDetailByUserId(1).subscribe(response => {
       if (response.success) {
-        this.calculateProductCount(response.data)
+        this.cartSummaryDtos = this.calculateProductCount.calculateProductCount(response.data)
+        this.invokeCartSummary()
       }
     })
   }
@@ -45,24 +49,9 @@ export class CartSummaryComponent implements OnInit {
   }
 
 
-  calculateProductCount(cartSummaryDto: CartSummaryDto[]) {
-    this.cartSummaryDtos = []
-    for (let index = 0; index < cartSummaryDto.length; index++) {
-      if (index == 0) {
-        let count: number = cartSummaryDto.filter(e => e.productId == cartSummaryDto[index].productId).length
-        // let price : number = cartSummaryDto[index].product.productPrice
-        cartSummaryDto[index].count = count
-        // cartSummaryDto[index].product.productPrice = count*price
-        this.cartSummaryDtos.push(cartSummaryDto[index])
-      }
-      else {
-        if (this.cartSummaryDtos.filter(e => e.productId == cartSummaryDto[index].productId).length == 0) {
-          cartSummaryDto[index].count = cartSummaryDto.filter(e => e.productId == cartSummaryDto[index].productId).length
-          this.cartSummaryDtos.push(cartSummaryDto[index])
-        }
-      }
-    }
-  }
 
+  invokeCartSummary(){
+    this.eventEmitterService.onInvokeSetCartSummary(this.cartSummaryDtos)
+  }
 
 }
