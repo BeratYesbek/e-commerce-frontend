@@ -8,9 +8,11 @@ import { Subscription } from 'rxjs/internal/Subscription';
 export class EventEmitterService {    
     
   invokeProductDetailComponentFunction = new EventEmitter()    
+  invokeNavComponentCurrentUser = new EventEmitter()
   invokeCartSummary = new EventEmitter()
   subsVar?: Subscription   
   subsCartSummary?: Subscription
+  subsNavComp? : Subscription
   cartSummaryDto : CartSummaryDto[] =[]
   constructor() { }    
    
@@ -20,8 +22,9 @@ export class EventEmitterService {
   }
   onInvokeGetCartSummary(){
     this.invokeCartSummary.emit(this.cartSummaryDto)
-  
-
+  }
+  onInvokeNavComponentCurrentUser(){
+    this.invokeNavComponentCurrentUser.emit();
   }
   oninvokeProductDetailComponentAddToCartButtonClick() {    
     this.invokeProductDetailComponentFunction.emit();    

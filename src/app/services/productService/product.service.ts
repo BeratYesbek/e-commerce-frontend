@@ -1,5 +1,5 @@
+import { ProductDto } from './../../models/Dtos/productDto';
 import { SingleResponseModel } from './../../utilities/responeModel/singleResponseModel';
-import { ProductDto } from '../../models/Dtos/productDto';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -26,6 +26,10 @@ export class ProductService {
 
   getAllProductDetail(): Observable<ListResponseModel<ProductDto>> {
     return this.httpClient.get<ListResponseModel<ProductDto>>(`${this.apiUrl}/getAllProductDetail`)
+  }
+
+  getAllProductDetailByCategoryId(categoryId : number) : Observable<ListResponseModel<ProductDto>> {
+    return this.httpClient.get<ListResponseModel<ProductDto>>(`${this.apiUrl}/getProductDetailByCategoryId?categoryId=${categoryId}`)
   }
 
   getProductDetailById(id :number): Observable<SingleResponseModel<ProductDto>>{

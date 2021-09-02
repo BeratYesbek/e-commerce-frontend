@@ -1,3 +1,4 @@
+import { User } from './../../models/user';
 import { EventEmitterService } from './../../services/event-emitter.service';
 import { CartSummaryService } from './../../services/cartSummaryService/cart-summary.service';
 import { Component, OnInit } from '@angular/core';
@@ -13,7 +14,7 @@ import { CalculateProductCount } from 'src/app/utilities/setCartSummary/calculat
 export class CartSummaryComponent implements OnInit {
 
   cartSummaryDtos: CartSummaryDto[] = []
-
+  currentUser?: User
   constructor(
     private cartSummaryService: CartSummaryService,
     private eventEmitterService: EventEmitterService,
@@ -32,7 +33,9 @@ export class CartSummaryComponent implements OnInit {
   }
 
   getAllCartSummaryByUserId() {
-    this.cartSummaryService.getAllCartSummaryDetailByUserId(1).subscribe(response => {
+    
+    let userId = Number(localStorage.getItem("userId"))
+    this.cartSummaryService.getAllCartSummaryDetailByUserId(userId).subscribe(response => {
       if (response.success) {
         this.cartSummaryDtos = this.calculateProductCount.calculateProductCount(response.data)
         this.invokeCartSummary()

@@ -1,10 +1,11 @@
+import { AuthService } from 'src/app/services/authService/auth.service';
 import { EventEmitterService } from './../../services/event-emitter.service';
 import { CategoryAddComponent } from './../category-add/category-add.component';
 import { CartSummaryService } from './../../services/cartSummaryService/cart-summary.service';
 import { ProductDto } from '../../models/Dtos/productDto';
 import { ProductService } from './../../services/productService/product.service';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NgxImgZoomService } from "ngx-img-zoom";
 import { NgbRatingConfig } from '@ng-bootstrap/ng-bootstrap';
 import { CartSummary } from 'src/app/models/cartSummary';
@@ -20,21 +21,23 @@ declare function imageZoom(x: any, y: any): void
 export class ProductDetailComponent implements OnInit {
 
   rating = 0
-  productDto! :ProductDto
+  productDto!: ProductDto
   constructor(
-    private activatedRoute : ActivatedRoute,
+    private activatedRoute: ActivatedRoute,
     private productService: ProductService,
-    private cartSummaryService : CartSummaryService,
+    private cartSummaryService: CartSummaryService,
     private eventEmitterService: EventEmitterService,
-    private config: NgbRatingConfig 
+    private config: NgbRatingConfig,
+    private authService: AuthService,
+    private router: Router
     ) {
-      config.max = 5;
-      config.readonly = true;
+    config.max = 5;
+    config.readonly = true;
   }
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => {
-      if(params["productId"]){
+      if (params["productId"]) {
         this.getProductDetailById(params["productId"])
       }
     })
@@ -42,32 +45,36 @@ export class ProductDetailComponent implements OnInit {
 
   getProductDetailById(id: number) {
     this.productService.getProductDetailById(id).subscribe(response => {
-        if(response.success){
-          this.productDto = response.data
-          this.calculateProductRating()
-        }
-    });
-  }
-
-  calculateProductRating(){
-    var total = 0
-    for (let index = 0; index < this.productDto.comments.length; index++) {
-      total = total + this.productDto.comments[index].rating     
-    }
-    this.rating = (total/this.productDto.comments.length)
-  }
-
-  addToCart(){
-
-    var cartSummary = new CartSummary()
-    cartSummary.productId = this.productDto.productId
-    cartSummary.userId = 1
-
-    this.cartSummaryService.add(cartSummary).subscribe(response => {
-      if(response.success){
-        this.componentFunction()
+      if (response.success) {
+        this.productDto = response.data
+        this.calculateProductRating()
       }
     });
+  }
+
+  calculateProductRating() {
+    var total = 0
+    for (let index = 0; index < this.productDto.comments.length; index++) {
+      total = total + this.productDto.comments[index].rating
+    }
+    this.rating = (total / this.productDto.comments.length)
+  }
+
+  addToCart() {
+    if (this.authService.isAuthenticated()) {
+      var cartSummary = new CartSummary()
+      cartSummary.productId = this.productDto.productId
+      cartSummary.userId = 1
+
+      this.cartSummaryService.add(cartSummary).subscribe(response => {
+        if (response.success) {
+          this.componentFunction()
+        }
+      });
+    } else {
+        this.router.navigate(["sign_in"])
+    }
+
   }
 
   componentFunction() {

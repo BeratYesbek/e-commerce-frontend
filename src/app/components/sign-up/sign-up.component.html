@@ -1,36 +1,36 @@
 
 <div id="container"  style="width: 100%; height: 100vh; " >
-  <div class="container" style="padding-top: 150px;">
-    <div style="background-color: #fff; width: 600px; margin: auto;
-    width: 50%; border-radius: 15px;">
-      <div style="padding-top: 50px; padding-bottom: 30px; padding-left: 30px;">
-        <strong style="font-size: 30px;">Sign Up</strong>
-    
+  <div style="margin-top: 150px;">
+    <form [formGroup]="signUpFormGroup" id="form-sign-up" style=" margin: auto;
+    width: 50%;
+    padding: 30px;  ">
+      <div class="form-group">
+        <label for="exampleInputEmail1">First Name</label>
+        <input type="text" formControlName="firstName" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="First Name">
       </div>
-      <form style="padding-left: 30px; padding-right: 30px; padding-bottom: 30px" class="example-form">
-        <mat-form-field class="example-full-width" appearance="fill">
-          <mat-label>First Name</mat-label>
-          <input matInput placeholder="First Name" />
-        </mat-form-field>
-        <mat-form-field class="example-full-width" appearance="fill">
-          <mat-label>Last Name</mat-label>
-          <input  matInput placeholder="Last Name" />
-        </mat-form-field>
-        <mat-form-field class="example-full-width" appearance="fill">
-          <mat-label>Email</mat-label>
-          <input type="email" matInput placeholder="email" />
-        </mat-form-field>
-        <mat-form-field class="example-full-width" appearance="fill">
-          <mat-label>Password</mat-label>
-          <input matInput type="password" placeholder="password" />
-        </mat-form-field>
-        <mat-form-field class="example-full-width" appearance="fill">
-          <mat-label>Password Again</mat-label>
-          <input type="password" matInput placeholder="Password Again" />
-        </mat-form-field>
-          <button mat-raised-button color="warn">Sign Up</button>
-      </form>
-    </div>
-   
+      <div class="form-group">
+        <label for="exampleInputEmail1">Last Name</label>
+        <input type="text" formControlName="lastName" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Last Name">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputEmail1">Email address</label>
+        <input type="email" formControlName="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Password</label>
+        <input type="password" formControlName="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Password Again</label>
+        <input type="password" formControlName="passwordAgain" class="form-control" id="exampleInputPassword1" placeholder="Password Again">
+      </div>
+      <div class="form-group form-check">
+        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+        <label class="form-check-label" for="exampleCheck1">I approve everything</label>
+      </div>
+      <button type="submit" (click)="signUp()" class="btn btn-primary">Sign Up</button>
+    </form>
   </div>
+ 
 </div>

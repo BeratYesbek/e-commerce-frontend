@@ -1,3 +1,4 @@
+import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -8,25 +9,25 @@ import { CategoryComponent } from './components/category/category.component';
 import { CategoryAddComponent } from './components/category-add/category-add.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSliderModule } from '@angular/material/slider';
-import {MatButtonModule} from '@angular/material/button';
-import {MatCardModule} from '@angular/material/card';
-import {MatGridListModule} from '@angular/material/grid-list';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatGridListModule } from '@angular/material/grid-list';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { OffersComponent } from './components/offers/offers.component';
 import { SuggetionsComponent } from './components/suggetions/suggetions.component';
-import {MatTooltipModule} from '@angular/material/tooltip';
-import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
-import { NgxImgZoomModule  } from 'ngx-img-zoom';
+import { NgxImgZoomModule } from 'ngx-img-zoom';
 import { ProductAddComponent } from './components/product-add/product-add.component';
-import {MatInputModule} from '@angular/material/input';
-import {MatSelectModule} from '@angular/material/select';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
 import { NgbCarousel, NgbModule, NgbSlide } from '@ng-bootstrap/ng-bootstrap';
 import { UserSettingsComponent } from './components/user-settings/user-settings.component';
 import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrandAddComponent } from './components/brand-add/brand-add.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { BrandComponent } from './components/brand/brand.component';
@@ -67,7 +68,7 @@ import { OrderDetailComponent } from './components/order-detail/order-detail.com
     MatGridListModule,
     MatTooltipModule,
     MatFormFieldModule,
-    NgxImgZoomModule ,
+    NgxImgZoomModule,
     MatInputModule,
     MatSelectModule,
     NgbModule,
@@ -75,11 +76,12 @@ import { OrderDetailComponent } from './components/order-detail/order-detail.com
     ReactiveFormsModule,
     NgbModule,
     HttpClientModule,
-     
-  
-    
+
+
+
   ],
   providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     EventEmitterService
   ],
   bootstrap: [AppComponent]
