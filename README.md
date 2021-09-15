@@ -1,5 +1,5 @@
 # ECommerceFrontendAngular
-#Description 
+### Description 
 In this project has an ecommerce frontend application infrastructure. Login guard, interceptor, ngx bootstrap angular, material ,httpclient api, dependency injection, emitter service and more and more technique has been used this project has been developed following SOLID principles and best practices.
 
 ### Authorization
