@@ -1,11 +1,17 @@
 # ECommerceFrontendAngular
+#Description 
+In this project has an ecommerce frontend application infrastructure. Login guard, interceptor, ngx bootstrap angular, material ,httpclient api, dependency injection, emitter service and more and more technique has been used this project has been developed following SOLID principles and best practices.
+
+### Authorization
+Auth is connected with e-commerce-backend. For example, If You log in system. Backend will give an access token. Whenever you make a request, we put the token in headers through with interceptor And backend make an auth that's way
+
+
 
 ![1](https://user-images.githubusercontent.com/77804034/133407546-39109d1c-cf22-4400-a208-9dd5c8de83d2.png)
 ![2](https://user-images.githubusercontent.com/77804034/133407557-7e3bccd8-68b3-4849-823e-c593176d134c.png)
 ![3](https://user-images.githubusercontent.com/77804034/133407563-c814d52c-878f-4457-98d9-1b7703b8f80c.png)
 ![4](https://user-images.githubusercontent.com/77804034/133407568-4cf59508-20fc-4e58-b893-ffe19c64bcaf.png)
 ![5](https://user-images.githubusercontent.com/77804034/133407573-111673f4-cdb6-416f-92f2-4b9cb579c85e.png)
-
 
 
 
