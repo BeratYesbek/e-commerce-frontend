@@ -1,16 +1,11 @@
 # ECommerceFrontendAngular
 
-<img src="https://user-images.githubusercontent.com/77804034/133407174-e2fe3e33-30f2-4efd-9d5e-9fe82c2e8ed3.png" width="500" height="850">
+![1](https://user-images.githubusercontent.com/77804034/133407546-39109d1c-cf22-4400-a208-9dd5c8de83d2.png)
+![2](https://user-images.githubusercontent.com/77804034/133407557-7e3bccd8-68b3-4849-823e-c593176d134c.png)
+![3](https://user-images.githubusercontent.com/77804034/133407563-c814d52c-878f-4457-98d9-1b7703b8f80c.png)
+![4](https://user-images.githubusercontent.com/77804034/133407568-4cf59508-20fc-4e58-b893-ffe19c64bcaf.png)
+![5](https://user-images.githubusercontent.com/77804034/133407573-111673f4-cdb6-416f-92f2-4b9cb579c85e.png)
 
-<img src="https://user-images.githubusercontent.com/77804034/133407159-7547eb87-b382-4fd7-a4cb-88eb4c2ae06f.png" width="500" height="850">
-
-<img src="https://user-images.githubusercontent.com/77804034/133407164-4ef6545c-ba02-43b8-bad8-92a62d986837.png" width="500" height="850">
-
-<img src="https://user-images.githubusercontent.com/77804034/133407164-4ef6545c-ba02-43b8-bad8-92a62d986837.png" width="500" height="850">
-
-<img src="https://user-images.githubusercontent.com/77804034/133407167-6d36b660-4324-41c9-bb4b-0fbaafd94362.png" width="500" height="850">
-
-<img src="https://user-images.githubusercontent.com/77804034/133403070-752e25de-75d8-44cc-8629-00ee0738c877.jpeg" width="500" height="850">
 
 
 
